@@ -1,0 +1,26 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+*.sqlite3
+/backend/media/
+/backend/staticfiles/
+venv/
+env/
+.venv/
+
+# Node / Next.js
+node_modules/
+.next/
+.env.local
+.env.production
+frontend/.env*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
