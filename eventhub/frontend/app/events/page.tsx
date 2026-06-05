@@ -1,6 +1,6 @@
 'use client'
-import { useEffect, useState, useCallback } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useEffect, useState, useCallback, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Search, SlidersHorizontal, CalendarDays } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { EventCard } from '@/components/EventCard'
@@ -27,9 +27,8 @@ const STATUS_OPTIONS = [
   { value: 'done', label: 'Selesai' },
 ]
 
-export default function EventsPage() {
+function EventsContent() {
   const searchParams = useSearchParams()
-  const router = useRouter()
 
   const [events, setEvents] = useState<Event[]>([])
   const [categories, setCategories] = useState<Category[]>([])
@@ -160,5 +159,13 @@ export default function EventsPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function EventsPage() {
+  return (
+    <Suspense>
+      <EventsContent />
+    </Suspense>
   )
 }
